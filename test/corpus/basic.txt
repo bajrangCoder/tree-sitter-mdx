@@ -1,0 +1,42 @@
+================
+Basic MDX Test
+================
+
+Hello <Component>World</Component>
+
+<Self />
+
+<Button prop="value">
+  Click {text}
+</Button>
+
+---
+
+(source_file
+  (text)
+  (jsx_element
+    (opening_element
+      (identifier))
+    (jsx_content
+      (text))
+    (closing_element
+      (identifier)))
+  (text)
+  (jsx_element
+    (self_closing_element
+      (identifier)))
+  (text)
+  (jsx_element
+    (opening_element
+      (identifier)
+      (attributes
+        (attribute
+          (identifier)
+          (string))))
+    (jsx_content
+      (text)
+      (jsx_expression)
+      (text))
+    (closing_element
+      (identifier)))
+  (text))

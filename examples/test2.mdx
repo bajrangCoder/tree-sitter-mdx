@@ -1,0 +1,21 @@
+---
+title: Test
+---
+
+import { Button } from 'ui'
+import Layout from './Layout'
+
+export const meta = {
+  title: 'Post'
+}
+
+export default ({ children }) => (
+  <Layout>
+    {children}
+  </Layout>
+)
+
+<Button>
+  Click me
+  {import('module')}
+</Button>
