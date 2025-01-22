@@ -53,6 +53,16 @@
     }
   },
   {
+    "type": "export_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "import_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "jsx_content",
     "named": true,
     "fields": {},
@@ -155,6 +165,14 @@
       "required": false,
       "types": [
         {
+          "type": "export_statement",
+          "named": true
+        },
+        {
+          "type": "import_statement",
+          "named": true
+        },
+        {
           "type": "jsx_element",
           "named": true
         },
@@ -172,7 +190,17 @@
   {
     "type": "string",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "\"",
@@ -184,6 +212,10 @@
   },
   {
     "type": "/>",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {
@@ -203,8 +235,20 @@
     "named": false
   },
   {
+    "type": "escape_sequence",
+    "named": true
+  },
+  {
+    "type": "export",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "import",
+    "named": false
   },
   {
     "type": "text",

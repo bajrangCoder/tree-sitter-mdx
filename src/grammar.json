@@ -18,6 +18,14 @@
           {
             "type": "SYMBOL",
             "name": "jsx_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "import_statement"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "export_statement"
           }
         ]
       }
@@ -25,6 +33,40 @@
     "text": {
       "type": "PATTERN",
       "value": "[^<{]+"
+    },
+    "import_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "import"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^;]+"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "export_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "export"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^;]+"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
     },
     "jsx_element": {
       "type": "CHOICE",
@@ -210,7 +252,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^}]*"
+          "value": "[^{}<>]+"
         },
         {
           "type": "STRING",
@@ -233,8 +275,20 @@
               "value": "\""
             },
             {
-              "type": "PATTERN",
-              "value": "[^\"]*"
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^\"\\\\]"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "escape_sequence"
+                  }
+                ]
+              }
             },
             {
               "type": "STRING",
@@ -250,8 +304,20 @@
               "value": "'"
             },
             {
-              "type": "PATTERN",
-              "value": "[^']*"
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^'\\\\]"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "escape_sequence"
+                  }
+                ]
+              }
             },
             {
               "type": "STRING",
@@ -260,6 +326,10 @@
           ]
         }
       ]
+    },
+    "escape_sequence": {
+      "type": "PATTERN",
+      "value": "\\\\."
     }
   },
   "extras": [

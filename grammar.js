@@ -11,10 +11,22 @@ module.exports = grammar({
 
   rules: {
     // The root node
-    source_file: ($) => repeat(choice($.text, $.jsx_element, $.jsx_expression)),
+    source_file: ($) =>
+      repeat(
+        choice(
+          $.text,
+          $.jsx_element,
+          $.jsx_expression,
+          $.import_statement,
+          $.export_statement,
+        )
+    ),
 
-    // Basic text content (anything that's not JSX)
+    // text content (anything that's not JSX)
     text: ($) => /[^<{]+/,
+    
+    import_statement: ($) => seq("import", /[^;]+/, ";"),
+    export_statement: ($) => seq("export", /[^;]+/, ";"),
 
     // JSX Elements
     jsx_element: ($) =>
@@ -41,10 +53,18 @@ module.exports = grammar({
 
     // JSX expressions (code within curly braces)
     jsx_expression: ($) => seq("{", /[^}]*/, "}"),
+    //jsx_expression: ($) =>
+     // seq("{", repeat(choice($.text, $.jsx_element, $.jsx_expression, /[^{}<>]+/)), "}"),
 
-    // Basic tokens
     identifier: ($) => /[a-zA-Z][a-zA-Z0-9_-]*/,
 
-    string: ($) => choice(seq('"', /[^"]*/, '"'), seq("'", /[^']*/, "'")),
+    string: ($) =>
+      choice(
+        seq('"', repeat(choice(/[^"\\]/, $.escape_sequence)), '"'),
+        seq("'", repeat(choice(/[^'\\]/, $.escape_sequence)), "'")
+      ),
+
+    // Escape sequences for strings
+    escape_sequence: ($) => /\\./,
   },
 });
