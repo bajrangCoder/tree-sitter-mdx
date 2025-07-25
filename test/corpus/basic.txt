@@ -1,0 +1,160 @@
+================================================================================
+Simple paragraph
+================================================================================
+
+This is a simple paragraph.
+
+--------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (jsx_text)))
+
+================================================================================
+Heading with text
+================================================================================
+
+# This is a heading
+
+--------------------------------------------------------------------------------
+
+(document
+  (heading
+    (jsx_text)))
+
+================================================================================
+JSX element
+================================================================================
+
+<div>Hello world</div>
+
+--------------------------------------------------------------------------------
+
+(document
+  (jsx_element
+    (jsx_opening_element
+      (jsx_element_name
+        (identifier)))
+    (jsx_text)
+    (jsx_closing_element
+      (jsx_element_name
+        (identifier)))))
+
+================================================================================
+JSX self-closing element
+================================================================================
+
+<img src="image.jpg" />
+
+--------------------------------------------------------------------------------
+
+(document
+  (jsx_self_closing_element
+    (jsx_element_name
+      (identifier))
+    (jsx_attribute
+      (jsx_attribute_name
+        (identifier))
+      (jsx_attribute_value
+        (string_literal)))))
+
+================================================================================
+MDX expression
+================================================================================
+
+{2 + 2}
+
+--------------------------------------------------------------------------------
+
+(document
+  (mdx_expression
+    (expression
+      (binary_expression
+        (expression
+          (primary_expression
+            (number_literal)))
+        (expression
+          (primary_expression
+            (number_literal)))))))
+
+================================================================================
+Import statement
+================================================================================
+
+import React from 'react';
+
+--------------------------------------------------------------------------------
+
+(document
+  (esm_statement
+    (import_statement
+      (import_clause
+        (identifier))
+      (string_literal))))
+
+================================================================================
+Export statement
+================================================================================
+
+export default Component;
+
+--------------------------------------------------------------------------------
+
+(document
+  (esm_statement
+    (export_statement
+      (export_default_declaration
+        (expression
+          (primary_expression
+            (identifier)))))))
+
+================================================================================
+Code block
+================================================================================
+
+```javascript
+function hello() {
+  console.log('Hello, world!');
+}
+```
+
+--------------------------------------------------------------------------------
+
+(document
+  (code_block
+    (language)
+    (code_line)
+    (code_line)
+    (code_line)))
+
+================================================================================
+Mixed content
+================================================================================
+
+# Hello World
+
+This is a paragraph.
+
+<div>JSX content</div>
+
+{expression}
+
+--------------------------------------------------------------------------------
+
+(document
+  (heading
+    (jsx_text))
+  (paragraph
+    (jsx_text))
+  (jsx_element
+    (jsx_opening_element
+      (jsx_element_name
+        (identifier)))
+    (jsx_text)
+    (jsx_closing_element
+      (jsx_element_name
+        (identifier))))
+  (mdx_expression
+    (expression
+      (primary_expression
+        (identifier)))))

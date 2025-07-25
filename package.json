@@ -1,0 +1,61 @@
+{
+  "name": "tree-sitter-mdx",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for MDX",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": [
+    "tree-sitter",
+    "mdx",
+    "markdown",
+    "jsx",
+    "parser"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^8.1.0",
+    "node-gyp-build": "^4.8.3"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.23.0",
+    "tree-sitter": "^0.21.1",
+    "node-gyp": "^10.2.0",
+    "prebuildify": "^6.0.1",
+    "jest": "^29.7.0",
+    "@types/node": "^22.5.5",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.1"
+  },
+  "scripts": {
+    "install": "node-gyp-build",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.mdx",
+      "file-types": [
+        "mdx"
+      ]
+    }
+  ],
+  "files": [
+    "grammar.js",
+    "src",
+    "bindings",
+    "binding.gyp",
+    "prebuilds"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/tree-sitter-mdx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/tree-sitter-mdx/issues"
+  },
+  "homepage": "https://github.com/your-username/tree-sitter-mdx#readme"
+}

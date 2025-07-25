@@ -1,0 +1,14 @@
+{
+  "grammars": [
+    {
+      "name": "mdx",
+      "scope": "source.mdx",
+      "file-types": ["mdx"],
+      "grammar": "grammar.js"
+    }
+  ],
+  "metadata": {
+    "url": "https://github.com/your-username/tree-sitter-mdx",
+    "version": "0.1.0"
+  }
+}

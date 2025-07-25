@@ -1,0 +1,29 @@
+node_modules/
+build/
+src/
+bindings/node/node-types.json
+*.log
+*.tgz
+.DS_Store
+coverage/
+.nyc_output/
+prebuilds/
+binding.gyp.bak
+
+# Generated files
+parser.c
+scanner.c
+node-types.json
+grammar.json
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
